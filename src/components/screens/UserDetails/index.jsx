@@ -8,31 +8,35 @@ import { useGetAlbums } from "../../../hooks/useGetAlbums";
 const UserDetails = () => {
   const [toggleInfo, setToggleInfo] = useState("posts");
   const [searchTerm, setSearchTerm] = useState("");
-  const [sortOrder, setSortOrder] = useState('asc');
+  const [sortOrder, setSortOrder] = useState("asc");
 
   const userData = useLoaderData();
   const { postsData } = useGetPosts(userData.id);
   const { albumsData } = useGetAlbums(userData.id);
 
-  const filteredPosts = postsData.filter((post) =>
-    post.title.toLowerCase().includes(searchTerm.toLowerCase())
-  ).sort((a, b) => {
-    if (sortOrder === 'asc') {
-      return a.title.localeCompare(b.title);
-    } else {
-      return b.title.localeCompare(a.title);
-    }
-  });
+  const filteredPosts = postsData
+    .filter((post) =>
+      post.title.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .sort((a, b) => {
+      if (sortOrder === "asc") {
+        return a.title.localeCompare(b.title);
+      } else {
+        return b.title.localeCompare(a.title);
+      }
+    });
 
-  const filteredAlbums = albumsData.filter((post) =>
-    post.title.toLowerCase().includes(searchTerm.toLowerCase())
-  ).sort((a, b) => {
-    if (sortOrder === 'asc') {
-      return a.title.localeCompare(b.title);
-    } else {
-      return b.title.localeCompare(a.title);
-    }
-  });
+  const filteredAlbums = albumsData
+    .filter((post) =>
+      post.title.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .sort((a, b) => {
+      if (sortOrder === "asc") {
+        return a.title.localeCompare(b.title);
+      } else {
+        return b.title.localeCompare(a.title);
+      }
+    });
 
   const handleSearchPostChange = (e) => {
     setSearchTerm(e.target.value);
@@ -43,7 +47,7 @@ const UserDetails = () => {
   };
 
   const toggleSortOrder = () => {
-    setSortOrder((prevOrder) => (prevOrder === 'asc' ? 'desc' : 'asc'));
+    setSortOrder((prevOrder) => (prevOrder === "asc" ? "desc" : "asc"));
   };
 
   if (!userData) {
@@ -75,8 +79,8 @@ const UserDetails = () => {
                 onChange={handleSearchPostChange}
               />
               <button onClick={toggleSortOrder}>
-        {sortOrder === 'asc' ? 'Sort Descending' : 'Sort Ascending'}
-      </button>
+                {sortOrder === "asc" ? "Sort Descending" : "Sort Ascending"}
+              </button>
               <ul style={{ textAlign: "left" }}>
                 {filteredPosts.map((post) => (
                   <li className={styles.card} key={post.id}>
@@ -98,8 +102,8 @@ const UserDetails = () => {
                 onChange={handleSearchAlbumChange}
               />
               <button onClick={toggleSortOrder}>
-        {sortOrder === 'asc' ? 'Sort Descending' : 'Sort Ascending'}
-      </button>
+                {sortOrder === "asc" ? "Sort Descending" : "Sort Ascending"}
+              </button>
               <ul style={{ textAlign: "left" }}>
                 {filteredAlbums.map((album) => (
                   <li className={styles.card} key={album.id}>
