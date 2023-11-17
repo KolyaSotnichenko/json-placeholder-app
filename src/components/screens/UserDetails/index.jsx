@@ -86,6 +86,7 @@ const UserDetails = () => {
                   </li>
                 ))}
               </ul>
+              <h2>Posts</h2>
             </>
           )}
           {toggleInfo === "albums" && (
@@ -108,6 +109,7 @@ const UserDetails = () => {
                   </li>
                 ))}
               </ul>
+              <h2>Albums</h2>
             </>
           )}
         </div>
